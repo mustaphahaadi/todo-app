@@ -1,6 +1,9 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
+import EditTask from "./EditTask";
 
-const TaskList = ({ tasks, onDelete, onToggle }) => {
+const TaskList = ({ tasks, onDelete, onToggle, onUpdate }) => {
+  const [editingTask, setEditingTask] = useState(null);
   const styles = {
     container: {
       listStyle: 'none',
@@ -129,8 +132,19 @@ const TaskList = ({ tasks, onDelete, onToggle }) => {
   }
 
   return (
-    <ul style={styles.container}>
-      {tasks.map((task) => (
+    <>
+      {editingTask && (
+        <EditTask
+          task={editingTask}
+          onUpdate={(updatedTask) => {
+            onUpdate(updatedTask);
+            setEditingTask(null);
+          }}
+          onCancel={() => setEditingTask(null)}
+        />
+      )}
+      <ul style={styles.container}>
+        {tasks.map((task) => (
         <li
           key={task.id}
           style={{
@@ -177,6 +191,14 @@ const TaskList = ({ tasks, onDelete, onToggle }) => {
             <div style={styles.actions}>
               <button
                 style={styles.actionButton}
+                onClick={() => setEditingTask(task)}
+                onMouseOver={(e) => e.target.style.color = '#3b82f6'}
+                onMouseOut={(e) => e.target.style.color = '#666'}
+              >
+                ✏️
+              </button>
+              <button
+                style={styles.actionButton}
                 onClick={() => onDelete(task.id)}
                 onMouseOver={(e) => e.target.style.color = '#ef4444'}
                 onMouseOut={(e) => e.target.style.color = '#666'}
@@ -187,7 +209,8 @@ const TaskList = ({ tasks, onDelete, onToggle }) => {
           </div>
         </li>
       ))}
-    </ul>
+      </ul>
+    </>
   );
 };
 
@@ -195,6 +218,7 @@ TaskList.propTypes = {
   tasks: PropTypes.array.isRequired,
   onDelete: PropTypes.func.isRequired,
   onToggle: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
 
 export default TaskList;

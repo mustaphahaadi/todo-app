@@ -1,108 +1,114 @@
-# To-Do List Application
+# TaskMaster - Advanced Todo Application
 
-A simple To-Do List application built with React and Django REST Framework. This application allows users to add, delete, and toggle the completion status of tasks.
+TaskMaster is a feature-rich task management application built with React and Django REST Framework.
 
 ## Features
 
-- Add new tasks
-- Delete tasks
-- Toggle task completion status
-- Responsive design
+- **User Authentication**: Secure login and registration system
+- **Task Management**: Create, update, delete, and organize tasks
+- **Kanban Board**: Drag-and-drop interface for task status management
+- **Categories & Tags**: Organize tasks with custom categories and tags
+- **Task Priorities**: Set task priorities (High, Medium, Low)
+- **Due Dates & Reminders**: Never miss a deadline with due dates and reminders
+- **Subtasks**: Break down complex tasks into manageable subtasks
+- **Dashboard**: Visual statistics and overview of your tasks
+- **Dark Mode**: Easy on the eyes with dark mode support
+- **Responsive Design**: Works on desktop, tablet, and mobile devices
+- **Search & Filter**: Quickly find the tasks you need
 
-## Technologies Used
+## Tech Stack
 
-- **Frontend**:
+### Frontend
+- React 19
+- React Router for navigation
+- Axios for API requests
+- TailwindCSS for styling
+- React Beautiful DnD for drag-and-drop functionality
+- Chart.js for statistics visualization
 
-  - React
-  - Vite
-  - Axios
-  - PropTypes
-  - CSS
-
-- **Backend**:
-  - Django
-  - Django REST Framework
+### Backend
+- Django 5.1
+- Django REST Framework for API
+- Simple JWT for authentication
+- SQLite database (can be configured for PostgreSQL)
 
 ## Getting Started
 
 ### Prerequisites
-
-- Node.js (v14 or later)
-- Python (v3.6 or later)
-- Django (v3.2 or later)
-- Django REST Framework
+- Node.js (v18+)
+- Python (v3.10+)
+- pip
 
 ### Installation
 
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/yourusername/todo-app.git
-   cd todo-app
+#### Backend Setup
+1. Navigate to the backend directory:
+   ```
+   cd todo_backend
    ```
 
-2. **Set up the backend:**
+2. Create a virtual environment:
+   ```
+   python -m venv venv
+   ```
 
-   - Navigate to the backend directory (if applicable).
-   - Install the required Python packages:
+3. Activate the virtual environment:
+   - Windows: `venv\Scripts\activate`
+   - macOS/Linux: `source venv/bin/activate`
 
-     ```bash
-     pip install -r requirements.txt
-     ```
+4. Install dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
 
-   - Run the Django migrations:
+5. Apply migrations:
+   ```
+   python manage.py migrate
+   ```
 
-     ```bash
-     python manage.py migrate
-     ```
+6. Create a superuser:
+   ```
+   python manage.py createsuperuser
+   ```
 
-   - Start the Django server:
+7. Run the development server:
+   ```
+   python manage.py runserver
+   ```
 
-     ```bash
-     python manage.py runserver
-     ```
+#### Frontend Setup
+1. Navigate to the project root directory
 
-3. **Set up the frontend:**
+2. Install dependencies:
+   ```
+   npm install
+   ```
 
-   - Navigate to the frontend directory:
+3. Start the development server:
+   ```
+   npm run dev
+   ```
 
-     ```bash
-     cd frontend
-     ```
+4. Open your browser and go to `http://localhost:5173`
 
-   - Install the required Node packages:
+## API Endpoints
 
-     ```bash
-     npm install
-     ```
-
-   - Start the Vite development server:
-
-     ```bash
-     npm run dev
-     ```
-
-4. **Access the application:**
-
-   Open your browser and go to `http://localhost:3000` to view the application.
-
-## Usage
-
-- Use the input field to add new tasks.
-- Click the checkbox next to a task to mark it as completed.
-- Click the delete button (🗑️) to remove a task from the list.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a pull request or open an issue.
+- `/api/token/` - Get JWT token
+- `/api/token/refresh/` - Refresh JWT token
+- `/api/users/` - User management
+- `/api/users/register/` - User registration
+- `/api/users/me/` - Current user info
+- `/api/tasks/` - Task CRUD operations
+- `/api/tasks/stats/` - Task statistics
+- `/api/categories/` - Category management
+- `/api/tags/` - Tag management
+- `/api/subtasks/` - Subtask management
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Acknowledgments
 
-- [React](https://reactjs.org/)
-- [Django](https://www.djangoproject.com/)
-- [Django REST Framework](https://www.django-rest-framework.org/)
-- [Vite](https://vitejs.dev/)
+- Icons from Heroicons
+- UI inspiration from various task management apps

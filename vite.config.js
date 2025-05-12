@@ -7,4 +7,9 @@ export default defineConfig({
   server: {
     port: 3000, // Specify the port number
   },
+  optimizeDeps: {
+    exclude: ['chunk-DRWLMN53', 'chunk-G3PMV62Z', 'chunk-PJEEZAML']
+  },
+  // Clear the cache on startup
+  cacheDir: '.vite'
 })
